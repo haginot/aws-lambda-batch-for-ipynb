@@ -11,7 +11,10 @@ COPY src/ ${LAMBDA_TASK_ROOT}/src/
 # from your project folder.
 
 COPY requirements.txt  .
-RUN  pip3 install -r requirements.txt --target "${LAMBDA_TASK_ROOT}"
+RUN pip3 install --upgrade pip 
+RUN pip3 install --upgrade -r requirements.txt --target "${LAMBDA_TASK_ROOT}"
+RUN pip3 install --upgrade ipython ipykernel
+RUN ipython kernel install --name "python3" --user
 
 # Set the CMD to your handler (could also be done as a parameter override outside of the Dockerfile)
 CMD [ "app.handler" ]

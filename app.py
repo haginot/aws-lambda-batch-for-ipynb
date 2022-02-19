@@ -9,7 +9,7 @@ def handler(event, context):
     logger.info(json.dumps(event))
     pm.execute_notebook(
         'src/app/input.ipynb',
-        'artifacts/ipynb/output.ipynb',
+        '/tmp/output.ipynb',
         parameters=dict()
     )
     return {'statusCode': 200, 'body': "{'handler': 'success'}"}
