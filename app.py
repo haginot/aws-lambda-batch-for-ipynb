@@ -1,3 +1,4 @@
+import os
 import logging
 import json
 import papermill as pm
@@ -12,4 +13,4 @@ def handler(event, context):
         '/tmp/output.ipynb',
         parameters=dict()
     )
-    return {'statusCode': 200, 'body': "{'handler': 'success'}"}
+    return {'statusCode': 200, 'body': "{'handler': 'success'}", 'MY_ENV': os.environ.get('MY_ENV')}
